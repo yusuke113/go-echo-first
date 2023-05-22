@@ -7,11 +7,7 @@ import (
 )
 
 type IUserRepository interface {
-	// FindAll() ([]*User, error)
-	// FindById(id uint) error
 	Create(user *model.User) error
-	// Update(user *User) error
-	// Delete(user *User) error
 }
 
 type userRepository struct {
