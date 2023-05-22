@@ -7,7 +7,7 @@ import (
 )
 
 type IUserUseCase interface {
-	StoreUser(user model.User) (model.UserRespose, error)
+	StoreUser(user model.User) (model.UserResponse, error)
 }
 
 type userUseCase struct {
@@ -19,10 +19,10 @@ func NewUserUseCase(ur repository.IUserRepository, uv validator.IUserValidator) 
 	return &userUseCase{ur: ur, uv: uv}
 }
 
-func (uu *userUseCase) StoreUser(user model.User) (model.UserRespose, error) {
+func (uu *userUseCase) StoreUser(user model.User) (model.UserResponse, error) {
 	// バリデーション
 	if err := uu.uv.UserValidator(user); err != nil {
-		return model.UserRespose{}, err
+		return model.UserResponse{}, err
 	}
 
 	// User構造体を作成
@@ -32,11 +32,11 @@ func (uu *userUseCase) StoreUser(user model.User) (model.UserRespose, error) {
 	}
 
 	if err := uu.ur.Create(&newUser); err != nil {
-		return model.UserRespose{}, err
+		return model.UserResponse{}, err
 	}
 
 	// レスポンス用のUser構造体を作成
-	resUser := model.UserRespose{
+	resUser := model.UserResponse{
 		ID:        newUser.ID,
 		Name:      newUser.Name,
 		Email:     newUser.Email,
