@@ -31,7 +31,7 @@ func (m *MockUserValidator) UserValidator(user model.User) error {
 	return m.FakeUserValidator(user)
 }
 
-func TestTest(t *testing.T) {
+func TestUserCreate(t *testing.T) {
 	// モックオブジェクトの作成
 	MockUserRepository := &MockUserRepository{}
 	MockUserValidator := &MockUserValidator{}
