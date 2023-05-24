@@ -33,7 +33,7 @@ func TestUserRepositoryCreate(t *testing.T) {
 		// エラーがないことを確認
 		assert.NoError(t, err)
 		assert.NotZero(t, user.ID)                                        // IDが設定されていることを確認
-		assert.Equal(t, "test1", user.Name)                                // Nameが設定されていることを確認
+		assert.Equal(t, "test1", user.Name)                               // Nameが設定されていることを確認
 		assert.Equal(t, "test@example.com", user.Email)                   // Emailが設定されていることを確認
 		assert.NotZero(t, user.CreatedAt)                                 // CreatedAtが設定されていることを確認
 		assert.NotZero(t, user.UpdatedAt)                                 // UpdatedAtが設定されていることを確認
@@ -43,9 +43,9 @@ func TestUserRepositoryCreate(t *testing.T) {
 
 	t.Run("同一メールアドレスでの登録時例外が発生すること", func(t *testing.T) {
 		user2 := &model.User{Name: "test2", Email: "test@example.com"}
-	
+
 		err := repo.Create(user2)
-	
+
 		assert.Error(t, err)
 		assert.EqualError(t, err, "UNIQUE constraint failed: users.email")
 	})
