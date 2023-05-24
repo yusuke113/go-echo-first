@@ -22,7 +22,7 @@ remake:
 
 # ---------- Goに関するコマンド ----------
 run:
-	go run ./main.go
+	go run ./cmd/main.go
 
 migrate:
 	go run migrate/migrate.go
