@@ -38,10 +38,7 @@ func (uv *userValidator) UserValidator(user model.User) error {
 
 // カスタムバリデーションルール
 func nameValidator(value interface{}) error {
-	name, ok := value.(string)
-	if !ok {
-		return errors.New("名前は文字列である必要があります")
-	}
+	name := value.(string)
 	if strings.TrimSpace(name) == "" {
 		return errors.New("名前は空白文字のみではない必要があります")
 	}
