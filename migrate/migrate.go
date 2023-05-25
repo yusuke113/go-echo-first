@@ -11,9 +11,9 @@ func main() {
 	dbConn := db.NewDB()
 
 	// マイグレーション終了後にDBを切断する
-	defer fmt.Println("Successfully Migrated")
+	defer fmt.Println("Successfully Up Migrated")
 	defer db.CloseDB(dbConn)
 
 	// マイグレーション
-	dbConn.AutoMigrate(&model.User{})
+	dbConn.AutoMigrate(&model.User{}, &model.Post{})
 }
