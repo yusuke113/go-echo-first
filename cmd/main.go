@@ -16,7 +16,6 @@ func main() {
 	userRepository := repository.NewUserRepository(db)
 	userUseCase := usecase.NewUserUseCase(userRepository, userValidator)
 	userController := controller.NewUserController(userUseCase)
-	helloController := controller.NewHelloController()
-	e := router.NewRouter(helloController, userController)
+	e := router.NewRouter(userController)
 	e.Logger.Fatal(e.Start(":8888"))
 }

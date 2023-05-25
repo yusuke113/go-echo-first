@@ -7,12 +7,13 @@ import (
 )
 
 func NewRouter(
-	hc controller.IHelloController,
 	uc controller.IUserController,
 ) *echo.Echo {
 	e := echo.New()
 
-	e.GET("/hello", hc.SayHello)
+	e.GET("/status", func(c echo.Context) error {
+		return c.JSON(200, map[string]string{"message": "OK"})
+	})
 	e.POST("/users", uc.StoreUser)
 	return e
 }
