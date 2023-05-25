@@ -24,8 +24,8 @@ remake:
 run:
 	go run ./cmd/main.go
 
-migrate:
-	go run migrate/migrate.go
+migrate-up:
+	go run ./migrate/migrate.go
 
 test:
 	go test -v -cover ./...
